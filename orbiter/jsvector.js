@@ -74,5 +74,10 @@ JSVector.prototype.distanceSquared = function(v2){
 }
 
 JSVector.prototype.rotate = function(angle){
-
+  let x = this.x;
+  let y = this.y;
+  let cos = Math.cos(angle);
+  let sin = Math.sin(angle);
+  this.x = x*cos-y*sin;
+  this.y = x*sin+y*cos;
 }

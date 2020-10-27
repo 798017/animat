@@ -2,7 +2,7 @@ var game;
 
 window.onload = init;
 
-fuction.init(){
+function init(){
   game = new Game();
   animate();
 

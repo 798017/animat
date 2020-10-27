@@ -29,7 +29,7 @@ Orbiter.prototype.render = function(){
   ctx.lineCap = "round";
   ctx.lineWidth = 4;
   ctx.beginPath();
-  ctx.moveTo(this.mover.location.x; this.mover.location.y);
+  ctx.moveTo(this.mover.location.x, this.mover.location.y);
   ctx.lineTo(this.location.x, this.location.y);
   ctx.stroke();
 }
