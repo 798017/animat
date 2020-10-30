@@ -73,6 +73,21 @@ JSVector.prototype.distanceSquared = function(v2){
   return(v2.x - this.x) * (v2.x - this.x) + (v2.y - this.y) * (v2.y - this.y);
 }
 
+JSVector.prototype.copy = function(){
+  return new JSVector(this.x,this.y);
+}
+
+// Override inherited toString() to describe this instance
+JSVector.prototype.toString = function() {
+    var x = this.x.toFixed(2);
+    var y = this.y.toFixed(2);
+    var m = this.getMagnitude().toFixed(2);
+    var a = this.getDirection().toFixed(2);
+    return("x:" + x + ", y: " + y + ", mag: " + m + ", a: " + a);
+    // return(` x: ${x_}, y: ${y_}, mag: ${m}, angle: ${a}`);
+}
+
+
 JSVector.prototype.rotate = function(angle){
   let x = this.x;
   let y = this.y;
