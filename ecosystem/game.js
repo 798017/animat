@@ -4,7 +4,7 @@ function Game(){
   this.ps = new ParticleSystem();
 
   this.movers = [];
-  this.createMovers(this.canvas, 69);
+  this.createMovers(this.canvas, 10);
 }
 
 Game.prototype.run = function(){
@@ -18,7 +18,7 @@ Game.prototype.run = function(){
 Game.prototype.createMovers = function(canvas, numMovers){
   for(var i = 0; i <numMovers; i++){
     var x, y, dx, dy, radius, clr, r, g, b, numOrbs;
-    radius = 7;
+    radius = 20;
     x = Math.random()*this.canvas.width;
     y = Math.random()*this.canvas.height;
     dx = Math.random()*2-1;

@@ -41,6 +41,29 @@ Mover.prototype.render = function(){
 
 
 Mover.prototype.update = function(){
+  //repulsion code
+  // if(this !== game.vehicles[0]){
+  //   let d = this.loc.distance(game.vehicles[0].loc);
+  //   if(d < 50){
+  //     this.acceleration = JSVector.subGetNew(this.loc, game.vehicles[0].loc);
+  //     this.acceleration.normalize();
+  //     this.acceleration.multiply(0.05);
+  //   }
+  // }
+  // this.velocity.add(this.acceleration);
+  // this.velocity.limit(game.slider2.value);
+  // this.loc.add(this.velocity);
+  let particles = game.ps;
+
+  for(let i = 0; i < particles.length; i++){
+    let d = this.loc.distance(particles[i].loc);
+    if (d < 50){
+      this.acceleration = JSVector.subGetNew(this.loc, particles[i].loc);
+      this.acceleration.normalize();
+      this.acceleration.multiply(0.05);
+    }
+  }
+
   if(!game.gamePaused){
     this.velocity.add(this.acceleration);
     this.velocity.limit(3);

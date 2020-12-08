@@ -11,7 +11,6 @@ function Orbiter(mover, orbiterRad, orbitRad, angle, angleVel, clr){
 Orbiter.prototype.update = function(){
   this.rotator.rotate(this.angleVel);
   this.location = JSVector.addGetNew(this.mover.location, this.rotator);
-
 }
 
 Orbiter.prototype.render = function(){
@@ -27,7 +26,7 @@ Orbiter.prototype.render = function(){
 
 
   ctx.lineCap = "round";
-  ctx.lineWidth = 4;
+  ctx.lineWidth = 6;
   ctx.beginPath();
   ctx.moveTo(this.mover.location.x, this.mover.location.y);
   ctx.lineTo(this.location.x, this.location.y);
