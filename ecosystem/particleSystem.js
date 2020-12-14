@@ -6,7 +6,7 @@ function ParticleSystem(){
 ParticleSystem.prototype.run = function(){
   for(let i = this.particles.length-1; i >= 0; i--){
     this.particles[i].run();
-    //give it a lifespan
+    //give it a lifespan 
     if(this.particles[i].isDead){
       this.particles.splice(i, 1);
     }

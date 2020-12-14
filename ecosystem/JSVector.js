@@ -7,6 +7,7 @@ JSVector.prototype.setMagnitude = function(mag){
   let dir = this.getDirection();
   this.x = Math.cos(dir)*mag;
   this.y = Math.sin(dir)*mag;
+  return this;
 }
 
 JSVector.prototype.getMagnitude = function(){
@@ -17,6 +18,7 @@ JSVector.prototype.setDirection = function(angle){
   var mag = this.getMagnitude();
   this.x = Math.cos(angle)*mag;
   this.y = Math.sin(angle)*mag;
+  return this;
 }
 
 
@@ -27,12 +29,13 @@ JSVector.prototype.getDirection = function(){
 JSVector.prototype.add = function(v2){
   this.x += v2.x;
   this.y += v2.y;
+  return this;
 }
 
 JSVector.prototype.sub = function(v2){
   this.x = this.x - v2.x;
   this.y = this.y - v2.y;
-
+  return this;
 }
 
 JSVector.addGetNew = function(v1, v2){
@@ -49,15 +52,18 @@ JSVector.prototype.multiply = function(scalar){
   this.x += scalar;
   this.y += scalar;
   //Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
+  return this;
 }
 
 JSVector.prototype.divide = function(scalar){
   this.x /= scalar;
   this.y /= scalar;
+  return this;
 }
 
 JSVector.prototype.normalize = function(){
   this.setMagnitude(1);
+  return this;
 }
 
 JSVector.prototype.limit = function(lim){
@@ -68,7 +74,7 @@ JSVector.prototype.limit = function(lim){
 }
 
 JSVector.prototype.distance = function(v2){
-  return Math.sqrt((v2.x - this.x) * (v2.y - this.y) * (v2.y - this.y));
+  return Math.sqrt((v2.x - this.x) * (v2.x - this.x) + (v2.y - this.y) * (v2.y - this.y));
 }
 
 JSVector.prototype.distanceSquared = function(v2){
@@ -97,4 +103,5 @@ JSVector.prototype.rotate = function(angle){
   let sin = Math.sin(angle);
   this.x = x*cos-y*sin;
   this.y = x*sin+y*cos;
+  return this;
 }

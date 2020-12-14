@@ -5,6 +5,7 @@ function Mover(x, y, dx, dy, radius, clr, numOrbs){
   this.radius = radius;
   this.orbitAngle = Math.random()*Math.PI;
   this.clr = clr;
+  this.c = clr;
   this.orbiters = [];
 
   for(let i = 0; i<numOrbs; i++){
@@ -15,6 +16,20 @@ function Mover(x, y, dx, dy, radius, clr, numOrbs){
 }
 
 Mover.prototype.run = function(){
+  let part = game.ps.particles;
+  for(let i = 0; i<part.length; i++){
+    let d = this.location.distance(part[i].loc);
+    let r = this.location.distance(game.ps.loc);
+    if(d<10){
+      this.clr = "rgba(255, 255, 255, 255)";
+
+    }
+
+    if(r >= 200 && this.clr == "rgba(255, 255, 255, 255)"){
+      this.clr = this.c;
+    }
+  }
+
   this.checkEdges();
   this.update();
   this.render();

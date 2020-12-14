@@ -3,9 +3,15 @@ function Game(){
   this.ctx = this.canvas.getContext('2d');
   this.ps = new ParticleSystem();
 
+  setInterval(createParticle, 200);     // use a timer to create 5 particles per second
   this.movers = [];
   this.createMovers(this.canvas, 10);
 }
+
+function createParticle(){
+  game.ps.addParticle();
+}
+
 
 Game.prototype.run = function(){
   this.ps.run();
