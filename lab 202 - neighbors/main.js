@@ -1,4 +1,4 @@
-var ecoSystem;   // game object
+ar ecoSystem;   // game object
 
 
 

@@ -1,5 +1,5 @@
 class Cell {
-    constructor(es, row, col) {
+    constructor(es, row, col, occ) {
       this.es = es;
       this.col = col;
       this.row = row;
@@ -9,17 +9,29 @@ class Cell {
       this.xCoor = col*this.width+this.es.world.left;
       this.yCoor = row*this.height+this.es.world.top;
       this.loc = new JSVector(this.xCoor, this.yCoor);
-      this.clr = "rgba(50, 150, 120, 0.2)"
+      this.occupied = occ;
+
+      this.neighbors = {
+        n: null,
+        e: null,
+        s: null,
+        w: null,
+      }
+
     }//  +++++++++  end constructor
 
     run() {
         this.render();
-        this.update();
+        this.loadNeighbors(this.neighbors);
     }
 
-    
-
     render() {
+      if(this.occupied == true){
+        this.clr = "red"
+      }
+      else{
+        this.clr = "green"
+      }
       let ctx1 = this.ctx1;
       ctx1.save();
       ctx1.strokeStyle = "rgba(0,0,0,1)";
@@ -34,7 +46,19 @@ class Cell {
       ctx1.restore();
     }
 
-    update() {
-
+    loadNeighbors(){
+    if(this.row>0 && !this.es.cells[this.row-1][this.col].occupied){
+      this.neighbors.n=this.es.cells[this.row-1][this.col];
     }
+    if(this.col>0 && !this.es.cells[this.row][this.col-1].occupied){
+      this.neighbors.w=this.es.cells[this.row][this.col-1];
+    }
+    if(this.row<this.es.numRows-1 && !this.es.cells[this.row+1][this.col].occupied){
+      this.neighbors.s=this.es.cells[this.row+1][this.col];
+    }
+    if(this.col<this.es.numCols-1 && !this.es.cells[this.row][this.col+1].occupied){
+      this.neighbors.e=this.es.cells[this.row][this.col+1];
+    }
+  }
+
 }
