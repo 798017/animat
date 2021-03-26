@@ -19,8 +19,8 @@ Particle.prototype.update = function(){
   this.vel.add(this.acc);
   this.vel.limit(3);
   this.loc.add(this.vel);
-  this.lifeSpan--;
-  if(this.lifeSpan  <= 0){
+  this.lifeSpan--
+  if(this.lifeSpan == 0){
     this.isDead = true;
   }
 }
